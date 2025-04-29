@@ -13,6 +13,10 @@ set "OSCDIMG_PATH=C:\Program Files (x86)\Windows Kits\10\Assessment and Deployme
 
 :: Create the ISO
 "%OSCDIMG_PATH%" -l%ISO_LABEL% -m -o "%SOURCE_DIR%" "%OUTPUT_ISO%"
+:: -m This enables creating a larger-than-700MB ISO, bypassing size checks meant for CD images.
+::-o This tells oscdimg to optimize storage by removing duplicate files during ISO creation.
+::-l%ISO_LABEL% -> Sets the volume label
+
 
 if %ERRORLEVEL% EQU 0 (
     echo ISO created successfully at: %OUTPUT_ISO%
